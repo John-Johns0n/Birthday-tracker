@@ -7,8 +7,9 @@ def get_people_data():
     """Get people data from csv"""
 
     people = []
+    csv_path = "people_example.csv"
 
-    with open('people.csv', newline='') as people_csv:
+    with open(csv_path, newline='') as people_csv:
         reader = csv.DictReader(people_csv, delimiter=',', quotechar='"')
         for row in reader:
             people.append(
