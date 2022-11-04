@@ -3,7 +3,7 @@ import datetime as d
 import csv
 
 
-def init():
+def get_people_data():
     """Get people data from csv"""
 
     people = []
@@ -30,27 +30,13 @@ def is_first_date_later(date1, date2):
     return date1.month > date2.month or (date1.month == date2.month and date1.day > date2.day)
 
 
-def quick_sort_birthdays(people):
+def sort_birthdays(people):
     """Sort people by birth date within the year"""
-    # This should really be an insertion sort.
-    # If you're bored and want to change the implementation yourself, go ahead!
 
-    length = len(people)
-    if length <= 1:
-        return people
-    else:
-        pivot = people.pop()
+    # Create new date with bogus year to use for comparisons, so dates can be compared independently of the year
+    people.sort(key=lambda elem: d.datetime(1000, elem.birthdate.month, elem.birthdate.day))
 
-    items_greater = []
-    items_lower = []
-
-    for person in people:
-        if is_first_date_later(person.birthdate, pivot.birthdate):
-            items_greater.append(person)
-        else:
-            items_lower.append(person)
-
-    return quick_sort_birthdays(items_lower) + [pivot] + quick_sort_birthdays(items_greater)
+    return people
 
 
 def sort_birthdays_with_current_date(people):

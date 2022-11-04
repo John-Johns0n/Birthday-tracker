@@ -5,7 +5,7 @@ import datetime as d
 
 def main():
     # Get people data sorted by birth date (within the year, starting from current date)
-    people = initPeople.sort_birthdays_with_current_date(initPeople.quick_sort_birthdays(initPeople.init()))
+    people = initPeople.sort_birthdays_with_current_date(initPeople.sort_birthdays(initPeople.get_people_data()))
 
     # Get today's date to make comparisons
     today = d.date.today()
