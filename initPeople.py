@@ -9,7 +9,7 @@ def get_people_data():
     people = []
     csv_path = "people_example.csv"
 
-    with open(csv_path, newline='') as people_csv:
+    with open(csv_path, newline='', encoding="UTF-8") as people_csv:
         reader = csv.DictReader(people_csv, delimiter=',', quotechar='"')
         for row in reader:
             people.append(
