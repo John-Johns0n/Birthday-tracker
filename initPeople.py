@@ -52,3 +52,8 @@ def sort_birthdays_with_current_date(people):
         people.append(people.pop(0))
 
     return people
+
+
+def get_people_data_sorted():
+    """Returns sorted people data for usage in main."""
+    return sort_birthdays_with_current_date(sort_birthdays(get_people_data()))

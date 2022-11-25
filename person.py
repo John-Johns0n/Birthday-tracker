@@ -8,8 +8,30 @@ class Person:
     """
 
     def __init__(self, name, birthdate):
-        today = d.date.today()
-
         self.name = name
         self.birthdate = birthdate
-        self.age = today.year - birthdate.year - ((today.month, today.day) < (birthdate.month, birthdate.day))
+        self.age = self.get_age()
+        self.next_bday = self.get_next_birthday()
+        self.days_until_next_bday = self.get_days_until_next_birthday()
+
+    def get_age(self):
+        """Returns the person's age."""
+        today = d.date.today()
+        return today.year - self.birthdate.year - (
+                    (today.month, today.day) < (self.birthdate.month, self.birthdate.day))
+
+    def get_next_birthday(self):
+        """Returns the date for the person's next birthday."""
+        today = d.date.today()
+        bday_this_year = d.date(year=today.year, month=self.birthdate.month, day=self.birthdate.day)
+        bday_next_year = d.date(year=today.year + 1, month=self.birthdate.month, day=self.birthdate.day)
+
+        if bday_this_year >= today:
+            return bday_this_year
+        elif bday_next_year >= today:
+            return bday_next_year
+
+    def get_days_until_next_birthday(self):
+        """Returns the number of days until the person's next birthday. If it is their birthday, return 0."""
+        today = d.date.today()
+        return (self.next_bday - today).days

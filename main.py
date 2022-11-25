@@ -4,26 +4,24 @@ import datetime as d
 
 def main():
     # Get people data sorted by birth date (within the year, starting from current date)
-    people = initPeople.sort_birthdays_with_current_date(initPeople.sort_birthdays(initPeople.get_people_data()))
+    people = initPeople.get_people_data_sorted()
 
-    # Get today's date to make comparisons
-    today = d.date.today()
     # This can be set to anything you like, it doesn't have to be three weeks. Used to display upcoming birthdays
-    today_plus_3weeks = today + d.timedelta(days=21)
+    days_to_check = 21
 
     birthdays_today = []
     upcoming_birthdays = []
 
     # Take people who were born today and put them in a separate list
-    while people[0].birthdate.month == today.month and people[0].birthdate.day == today.day:
+    while people[0].days_until_next_bday == 0:
         birthdays_today.append(people.pop(0))
 
     # Take people who were born on dates between tomorrow and x later (default 3 weeks) and put them in a separate list
-    while initPeople.is_first_date_later(today_plus_3weeks, people[0].birthdate):
+    while people[0].days_until_next_bday <= days_to_check:
         upcoming_birthdays.append(people.pop(0))
 
     # Print today's date
-    print(f"\nToday is {today.strftime('%B %d, %Y')}")
+    print(f"\nToday is {d.date.today().strftime('%B %d, %Y')}")
 
     # Print names and age of people born today
     if len(birthdays_today) > 0:
