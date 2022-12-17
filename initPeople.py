@@ -7,7 +7,7 @@ def get_people_data():
     """Get people data from csv"""
 
     people = []
-    csv_path = "people_example.csv"
+    csv_path = "people.csv"
 
     with open(csv_path, newline='', encoding="UTF-8") as people_csv:
         reader = csv.DictReader(people_csv, delimiter=',', quotechar='"')
@@ -48,8 +48,15 @@ def sort_birthdays_with_current_date(people):
     """
     today = d.date.today()
 
-    while is_first_date_later(today, people[0].birthdate):
-        people.append(people.pop(0))
+    # The reason a while loop isn't used here is because it leads to an infinite loop in some cases.
+    # If the latest birthday in the list is earlier in the year than today's date, the while loop can go on forever.
+    # Could have been solved by adding an extra boolean value or keeping track of the first list item in some way,
+    # but this felt like a much simpler solution, although it isn't very elegant.
+    for person in people:
+        if is_first_date_later(today, person.birthdate):
+            people.append(people.pop(0))
+        else:
+            break
 
     return people
 
