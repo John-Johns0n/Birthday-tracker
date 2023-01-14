@@ -34,9 +34,7 @@ def is_first_date_later(date1, date2):
 def sort_birthdays(people):
     """Sort people by birth date within the year"""
 
-    # Create new date with bogus year to use for comparisons, so dates can be compared independently of the year
-    people.sort(key=lambda elem: d.datetime(1000, elem.birthdate.month, elem.birthdate.day))
-
+    people.sort()
     return people
 
 

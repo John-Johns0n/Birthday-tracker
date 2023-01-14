@@ -35,3 +35,18 @@ class Person:
         """Returns the number of days until the person's next birthday. If it is their birthday, return 0."""
         today = d.date.today()
         return (self.next_bday - today).days
+
+    def __gt__(self, other):
+        # Create new dates with bogus year to use for comparisons, so dates can be compared independently of the year
+        self_date = d.date(1000, self.birthdate.month, self.birthdate.day)
+        other_date = d.date(1000, other.birthdate.month, other.birthdate.day)
+
+        return self_date > other_date
+
+    def __lt__(self, other):
+        # Create new dates with bogus year to use for comparisons, so dates can be compared independently of the year
+        self_date = d.date(1000, self.birthdate.month, self.birthdate.day)
+        other_date = d.date(1000, other.birthdate.month, other.birthdate.day)
+
+        return self_date < other_date
+
