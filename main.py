@@ -2,7 +2,7 @@ import initPeople
 import datetime as d
 
 
-def main():
+if __name__ == "__main__":
     # Get people data sorted by birth date (within the year, starting from current date)
     people = initPeople.get_people_data_sorted()
 
@@ -38,6 +38,3 @@ def main():
             print(f"{person.name}, turning {person.age + 1} on {person.birthdate.strftime('%B %d')}")
     else:
         print("No soon upcoming birthdays.")
-
-
-main()
