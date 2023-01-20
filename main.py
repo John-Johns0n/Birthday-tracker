@@ -16,9 +16,12 @@ if __name__ == "__main__":
     while people[0].days_until_next_bday == 0:
         birthdays_today.append(people.pop(0))
 
-    # Take people who were born on dates between tomorrow and x later (default 3 weeks) and put them in a separate list
-    while people[0].days_until_next_bday <= days_to_check:
-        upcoming_birthdays.append(people.pop(0))
+    # Take people born on dates between tomorrow and n days later (default 3 weeks) and put them in a separate list
+    try:
+        while people[0].days_until_next_bday <= days_to_check:
+            upcoming_birthdays.append(people.pop(0))
+    except IndexError:  # If all birthdays left in the list are upcoming in n <= [days_to_check] days
+        pass
 
     # Print today's date
     print(f"\nToday is {d.date.today().strftime('%B %d, %Y')}")
