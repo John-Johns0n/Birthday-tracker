@@ -32,7 +32,7 @@ def is_first_date_later(date1, date2):
 
 
 def sort_birthdays(people):
-    """Sort people by birth date within the year"""
+    """Sort people by birthdate within the year"""
 
     people.sort()
     return people
@@ -40,8 +40,8 @@ def sort_birthdays(people):
 
 def sort_birthdays_with_current_date(people):
     """
-    Go through the (now sorted by birth date) list of people, iterate through them,
-    and if their birth date is earlier in the year than the current date,
+    Go through the (now sorted by birthdate) list of people, iterate through them,
+    and if their birthdate is earlier in the year than the current date,
     put them at the end of the list
     """
     today = d.date.today()

@@ -49,4 +49,3 @@ class Person:
         other_date = d.date(1000, other.birthdate.month, other.birthdate.day)
 
         return self_date < other_date
-

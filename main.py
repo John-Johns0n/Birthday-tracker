@@ -5,7 +5,7 @@ import datetime as d
 if __name__ == "__main__":
     today = d.date.today()
 
-    # Get people data sorted by birth date (within the year, starting from current date)
+    # Get people data sorted by birthdate (within the year, starting from current date)
     people = initPeople.get_people_data_sorted()
 
     # This can be set to anything you like, it doesn't have to be three weeks. Used to display upcoming birthdays
@@ -28,11 +28,11 @@ if __name__ == "__main__":
     # Print today's date
     print(f"\nToday is {d.date.today().strftime('%B %d, %Y')}")
 
-    # Check for mother's day and father's day
+    # Check for Mother's Day and Father's Day
     if today.month == 5 and today.isoweekday() == 7 and 8 <= today.day <= 14:
-        print("It is mother's day today.")
+        print("It is Mother's Day today.")
     if today.month == 6 and today.isoweekday() == 7 and 15 <= today.day <= 21:
-        print("It is father's day today.")
+        print("It is Father's Day today.")
 
     # Print names and age of people born today
     if len(birthdays_today) > 0:
